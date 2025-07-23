@@ -1,0 +1,13 @@
+{
+  "id": "test123",
+  "creationTimeStamp": "2025-07-23T10:00:00Z",
+  "manifestTemplate": "CutOverSchema_1.0",
+  "processType": "CutOver",
+  "processName": "SampleProcess",
+  "processDate": "2025-07-23T10:00:00Z",
+  "fileTypesToProcess": [
+    { "stepID": "A", "interfaceType": "TypeA", "sourceLocationOld": "$locOld", "sourceLocationNew": "$locNew" },
+    { "stepID": "B", "interfaceType": "TypeB", "sourceLocationOld": "$locOld", "sourceLocationNew": "$locNew", "prerequisites": [{ "stepId": "A" }] },
+    { "stepID": "C", "interfaceType": "TypeC", "sourceLocationOld": "$locOld", "sourceLocationNew": "$locNew", "prerequisites": [{ "stepId": "B" }] }
+  ]
+}
