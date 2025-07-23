@@ -7,7 +7,6 @@ from .rule_engine import RuleEngine, DefaultRuleEngine
 
 logger = logging.getLogger(__name__)
 
-# ---- Executor Registry ----
 class StepExecutor(ABC):
     """Interface for executing a step."""
 
@@ -34,7 +33,6 @@ def get_executor(interface_type: str) -> StepExecutor:
     return executor_cls()
 
 
-# Example executor
 @register_executor('TypeA')
 class TypeAExecutor(StepExecutor):
     def execute(self, step: Step) -> None:
@@ -42,7 +40,6 @@ class TypeAExecutor(StepExecutor):
 
 
 class DAGExecutor:
-    """Handles DAG resolution and step execution."""
 
     def __init__(
         self,

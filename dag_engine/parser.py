@@ -3,7 +3,6 @@ from typing import Any
 from .models import Manifest
 from .exceptions import ManifestLoadError
 
-
 def load_manifest(path: str) -> Manifest:
     """
     Load and validate the manifest JSON.
@@ -15,6 +14,6 @@ def load_manifest(path: str) -> Manifest:
     try:
         with open(path, 'r', encoding='utf-8') as f:
             data: Any = json.load(f)
-        return Manifest.parse_obj(data)
+        return Manifest.model_validate(data)
     except Exception as exc:
         raise ManifestLoadError(f"Failed to load manifest: {exc}") from exc
