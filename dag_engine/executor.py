@@ -11,7 +11,7 @@ class StepExecutor(ABC):
     """Interface for executing a step."""
 
     @abstractmethod
-    def execute(self, step: Step) -> None:
+    def execute(self, step: Step) -> Dict:
         pass
 
 _EXECUTOR_REGISTRY: Dict[str, Type[StepExecutor]] = {}
@@ -35,8 +35,9 @@ def get_executor(interface_type: str) -> StepExecutor:
 
 @register_executor('TypeA')
 class TypeAExecutor(StepExecutor):
-    def execute(self, step: Step) -> None:
+    def execute(self, step: Step) -> Dict:
         logger.info(f"[TypeA] Processing {step.stepID}: {step.sourceLocationOld} -> {step.sourceLocationNew}")
+        return {"status": "success", "stepId": step.stepID}
 
 
 class DAGExecutor:
