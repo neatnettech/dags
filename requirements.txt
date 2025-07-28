@@ -1,5 +1,0 @@
-pytest~=8.4.1
-pydantic~=2.7.3
-fastapi~=0.104.1
-uvicorn[standard]~=0.24.0
-requests~=2.31.0
